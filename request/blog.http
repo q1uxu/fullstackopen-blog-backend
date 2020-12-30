@@ -1,0 +1,12 @@
+GET http://localhost:3003/api/blogs
+
+###
+POST http://localhost:3003/api/blogs
+Content-Type: application/json
+
+{
+  "title": "一图看懂小米11手机：骁龙888旗舰3999元起",
+  "author": "骑士",
+  "url": "https://www.ithome.com/0/527/235.htm",
+  "likes": 109
+}
