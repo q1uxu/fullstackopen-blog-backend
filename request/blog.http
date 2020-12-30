@@ -1,11 +1,23 @@
-GET http://localhost:3003/api/blogs
+@baseURL = http://localhost:3003/api/blogs
+@blogId = 5fec47c4d1b33414f899052d
+GET {{baseURL}}
 
 ###
-@blogId = 5fec44225ad5873dac7ff281
-DELETE http://localhost:3003/api/blogs/{{blogId}}
+DELETE {{baseURL}}/{{blogId}}
 
 ###
-POST http://localhost:3003/api/blogs
+PUT {{baseURL}}/{{blogId}}
+Content-Type: application/json
+
+{
+  "title": "一图看懂小米11手机：骁龙888旗舰3999元起",
+  "author": "骑士",
+  "url": "https://www.ithome.com/0/527/235.htm",
+  "likes": 120
+}
+
+###
+POST {{baseURL}}
 Content-Type: application/json
 
 {
