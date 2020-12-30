@@ -1,6 +1,10 @@
 GET http://localhost:3003/api/blogs
 
 ###
+@blogId = 5fec44225ad5873dac7ff281
+DELETE http://localhost:3003/api/blogs/{{blogId}}
+
+###
 POST http://localhost:3003/api/blogs
 Content-Type: application/json
 
