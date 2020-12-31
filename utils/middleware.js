@@ -1,4 +1,5 @@
 const morgan = require('morgan');
+const logger = require('./logger');
 
 morgan.token('body', request => {
   return JSON.stringify(request.body);
@@ -9,7 +10,7 @@ const requestLogger = morgan((tokens, request, response) => {
     tokens.method(request, response),
     tokens.url(request, response),
     tokens.status(request, response),
-    tokens['response-time'](request, response)+'ms',
+    tokens['response-time'](request, response) + 'ms',
     tokens.body(request, response),
   ].join(' ');
 });
@@ -19,7 +20,7 @@ const tokenExtractor = (request, response, next) => {
   if (authorization && authorization.toLowerCase().startsWith('bearer ')) {
     request.token = authorization.substring(7);
   }
-  next()
+  next();
 };
 
 const unknownEndpoint = (request, response) => {
@@ -39,4 +40,4 @@ const middleware = {
 };
 
 
-module.exports = middleware
+module.exports = middleware;

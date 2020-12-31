@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
 const blogSchema = mongoose.Schema({
   title: { type: String, required: true },
@@ -16,6 +16,6 @@ blogSchema.set('toJSON', {
   }
 });
 
-const Blog = mongoose.model('Blog', blogSchema)
+const Blog = mongoose.model('Blog', blogSchema);
 
-module.exports = Blog
+module.exports = Blog;

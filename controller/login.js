@@ -1,14 +1,14 @@
-const express = require('express')
-const User = require('../models/User')
-const bcrypt = require('bcrypt')
-const jwt = require('jsonwebtoken')
-const config = require('../utils/config')
+const express = require('express');
+const User = require('../models/User');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
+const config = require('../utils/config');
 
-const loginRouter = express.Router()
+const loginRouter = express.Router();
 
 loginRouter.post('/', async (request, response) => {
-  const body = request.body
-  const user = await User.findOne({ username: body.username })
+  const body = request.body;
+  const user = await User.findOne({ username: body.username });
 
   const isPasswordCorrect = user === null
     ? false
@@ -33,7 +33,7 @@ loginRouter.post('/', async (request, response) => {
       name: user.name
     });
 
-})
+});
 
 
-module.exports = loginRouter
+module.exports = loginRouter;

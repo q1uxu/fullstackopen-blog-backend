@@ -1,15 +1,15 @@
-const express = require('express')
-const jwt = require('jsonwebtoken')
-const Blog = require('../models/Blog')
+const express = require('express');
+const jwt = require('jsonwebtoken');
+const Blog = require('../models/Blog');
 const User = require('../models/User');
-const config = require('../utils/config')
+const config = require('../utils/config');
 
-const blogRouter = express.Router()
+const blogRouter = express.Router();
 
 blogRouter.get('/', async (request, response) => {
-  const blogs = await Blog.find({}).populate('user', ['username', 'name'])
-  response.json(blogs)
-})
+  const blogs = await Blog.find({}).populate('user', ['username', 'name']);
+  response.json(blogs);
+});
 
 blogRouter.post('/', async (request, response) => {
   const decodedToken = jwt.verify(request.token, config.SECRET);
@@ -21,12 +21,12 @@ blogRouter.post('/', async (request, response) => {
   const blog = new Blog({
     ...request.body,
     user: user._id
-  })
-  const savedBlog = await blog.save()
-  user.blogs = user.blogs.concat(savedBlog._id)
-  await user.save()
-  response.status(201).json(savedBlog)
-})
+  });
+  const savedBlog = await blog.save();
+  user.blogs = user.blogs.concat(savedBlog._id);
+  await user.save();
+  response.status(201).json(savedBlog);
+});
 
 blogRouter.delete('/:id', async (request, response) => {
   const decodedToken = jwt.verify(request.token, config.SECRET);
@@ -43,11 +43,11 @@ blogRouter.delete('/:id', async (request, response) => {
 
   blog.remove();
   response.status(204).end();
-})
+});
 
 blogRouter.put('/:id', async (request, response) => {
-  const savedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body, {new: true}).populate('user', ['username', 'name'])
-  response.status(201).json(savedBlog)
-})
+  const savedBlog = await Blog.findByIdAndUpdate(request.params.id, request.body, {new: true}).populate('user', ['username', 'name']);
+  response.status(201).json(savedBlog);
+});
 
-module.exports = blogRouter
+module.exports = blogRouter;
