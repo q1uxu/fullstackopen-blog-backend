@@ -1,5 +1,6 @@
 @baseURL = http://localhost:3003/api/blogs
 @blogId = 5fec47c4d1b33414f899052d
+@jwt = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InFxeCIsImlkIjoiNWZlZDNjOTljNzFmODcxMDk4YTcwMTViIiwiaWF0IjoxNjA5Mzg0ODUxfQ.sxzalrATWDdFk0q_gSFP2AzREjY8U3t9zjI_dSAQUCs
 GET {{baseURL}}
 
 ###
@@ -19,6 +20,7 @@ Content-Type: application/json
 ###
 POST {{baseURL}}
 Content-Type: application/json
+Authorization: {{jwt}}
 
 {
   "title": "一图看懂小米11手机：骁龙888旗舰3999元起",
