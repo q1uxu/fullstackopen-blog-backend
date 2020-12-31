@@ -1,4 +1,3 @@
-require('dotenv').config()
 const express = require('express')
 require('express-async-errors')
 const app = express()
@@ -9,8 +8,9 @@ const blogRouter = require('./controller/blog')
 const userRouter = require('./controller/user')
 const loginRouter = require('./controller/login')
 const middleware = require('./utils/middleware')
+const config = require('./utils/config')
 
-const mongoUrl = 'mongodb://localhost/bloglist'
+const mongoUrl = config.MONGODB_URI
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true })
 
 app.use(cors())
