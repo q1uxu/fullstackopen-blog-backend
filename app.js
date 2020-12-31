@@ -3,6 +3,7 @@ require('express-async-errors')
 const app = express()
 const cors = require('cors')
 const mongoose = require('mongoose')
+mongoose.plugin(require('mongoose-unique-validator'));
 const blogRouter = require('./controller/blog')
 const userRouter = require('./controller/user')
 
