@@ -1,5 +1,9 @@
 @baseURL = http://localhost:3003/api/users
 
+###
+GET {{baseURL}}
+
+###
 POST {{baseURL}}
 Content-Type: application/json
 
