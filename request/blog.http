@@ -1,5 +1,5 @@
 @baseURL = http://localhost:3003/api/blogs
-@blogId = 5fed48b6cea1874dfc472360g
+@blogId = 5ffaf2962884257e9ac38f09
 @jwt = Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InFxeCIsImlkIjoiNWZlZDNjOTljNzFmODcxMDk4YTcwMTViIiwiaWF0IjoxNjA5Mzg0ODUxfQ.sxzalrATWDdFk0q_gSFP2AzREjY8U3t9zjI_dSAQUCs
 GET {{baseURL}}
 
@@ -28,4 +28,12 @@ Authorization: {{jwt}}
   "author": "骑士",
   "url": "https://www.ithome.com/0/527/235.htm",
   "likes": 109
+}
+
+###
+POST {{baseURL}}/{{blogId}}/comments
+Content-Type: application/json
+
+{
+  "comment": "test"
 }

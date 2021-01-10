@@ -25,12 +25,12 @@ userRouter.post('/', async (request, response) => {
 });
 
 userRouter.get('/', async (request, response) => {
-  const allUsers = await User.find({}).populate('blogs', ['title', 'author', 'url', 'likes']);
+  const allUsers = await User.find({}).populate('blogs', ['title', 'author', 'url', 'likes', 'comments']);
   response.json(allUsers);
 });
 
 userRouter.get('/:id', async (request, response) => {
-  const user = await User.findById(request.params.id).populate('blogs', ['title', 'author', 'url', 'likes']);
+  const user = await User.findById(request.params.id).populate('blogs', ['title', 'author', 'url', 'likes', 'comments']);
   response.json(user);
 });
 
